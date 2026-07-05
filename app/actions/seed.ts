@@ -4,7 +4,7 @@ import { db } from "@/lib/db"
 import { requests, ideas, sprintItems } from "@/lib/db/schema"
 import { requireUser } from "@/lib/session"
 import { computeScore, scoreToBand } from "@/lib/format"
-import { SPRINT_NAME } from "./sprint"
+import { SPRINT_NAME } from "@/lib/sprint-config"
 import { revalidatePath } from "next/cache"
 
 function daysFromNow(n: number) {

@@ -5,11 +5,12 @@ import { sprintItems, requests } from "@/lib/db/schema"
 import { requireUser } from "@/lib/session"
 import { desc, eq } from "drizzle-orm"
 import { revalidatePath } from "next/cache"
-
-export const SPRINT_NAME = "Sprint 24"
-export const SPRINT_CAPACITY_DAYS = 40 // total pod-days
-export const CLIENT_RATIO = 0.7
-export const INTERNAL_RATIO = 0.3
+import {
+  SPRINT_NAME,
+  SPRINT_CAPACITY_DAYS,
+  CLIENT_RATIO,
+  INTERNAL_RATIO,
+} from "@/lib/sprint-config"
 
 export async function getSprintBoard() {
   await requireUser()
