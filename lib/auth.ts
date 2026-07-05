@@ -15,6 +15,10 @@ export const auth = betterAuth({
     autoSignIn: true,
   },
   trustedOrigins: [
+    // v0 preview iframe runs on a per-session *.vusercontent.net subdomain
+    "https://*.vusercontent.net",
+    // Vercel preview deployments
+    "https://*.vercel.app",
     ...(process.env.V0_RUNTIME_URL ? [process.env.V0_RUNTIME_URL] : []),
     ...(process.env.VERCEL_URL ? [`https://${process.env.VERCEL_URL}`] : []),
     ...(process.env.VERCEL_PROJECT_PRODUCTION_URL
