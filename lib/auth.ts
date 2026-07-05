@@ -1,7 +1,20 @@
 import { betterAuth } from "better-auth"
 import { pool } from "@/lib/db"
 
+const secret = process.env.BETTER_AUTH_SECRET
+if (!secret) {
+  if (process.env.NODE_ENV === "production") {
+    throw new Error(
+      "BETTER_AUTH_SECRET environment variable is required. Set it in your Vercel project settings."
+    )
+  }
+  console.warn(
+    "[dev] BETTER_AUTH_SECRET not set, using insecure placeholder for development only"
+  )
+}
+
 export const auth = betterAuth({
+  secret: secret || "development-placeholder-insecure",
   database: pool,
   baseURL:
     process.env.BETTER_AUTH_URL ??
